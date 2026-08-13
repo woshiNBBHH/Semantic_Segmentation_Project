@@ -95,8 +95,9 @@ zip -r semantic_segmentation_code.zip . -x "*.git*" -x "Experiments/*" -x "__pyc
 在 Notebook 的第一个 Cell 中粘贴：
 
 ```python
-# 克隆代码
-!git clone https://github.com/woshiNBBHH/Semantic_Segmentation_Project.git
+# 删除旧代码（如果存在），然后重新克隆
+# 注意：要在 /kaggle/working 下执行删除，避免删掉当前工作目录
+!cd /kaggle/working && rm -rf Semantic_Segmentation_Project && git clone https://github.com/woshiNBBHH/Semantic_Segmentation_Project.git
 
 # 切换到项目目录
 import os
