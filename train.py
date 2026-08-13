@@ -2,6 +2,7 @@ import os
 import argparse
 import random
 import time
+import importlib
 
 
 import numpy as np
@@ -12,11 +13,35 @@ import torch.nn as nn
 from torch.utils.data import DataLoader
 
 
+
 # ==========================
-# Config
+# Parse arguments first
 # ==========================
 
-from Config.fcn_baseline import Config
+parser = argparse.ArgumentParser()
+
+parser.add_argument(
+    "--config",
+    type=str,
+    default="Config.fcn_baseline",
+    help="Python module path of the config file, e.g. Config.fcn_baseline"
+)
+
+parser.add_argument(
+    "--resume",
+    type=str,
+    default=None,
+    help="Path to checkpoint to resume from"
+)
+
+args = parser.parse_args()
+
+
+# ==========================
+# Dynamic config import
+# ==========================
+
+Config = importlib.import_module(args.config).Config
 
 
 
@@ -646,20 +671,6 @@ def main(resume=None):
 
 
 if __name__ == "__main__":
-
-
-    parser = argparse.ArgumentParser()
-
-
-    parser.add_argument(
-        "--resume",
-        type=str,
-        default=None
-    )
-
-
-    args = parser.parse_args()
-
 
 
     main(

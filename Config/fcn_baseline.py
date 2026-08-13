@@ -42,7 +42,11 @@ class Config:
     # =====================================================
     # Dataset Configuration
     # =====================================================
-    DATA_ROOT = "/kaggle/input/datasets/huanghanchina/pascal-voc-2012/VOC2012"
+    # Kaggle dataset mount path.
+    # When you upload a Dataset named "pascal-voc-2012" on Kaggle,
+    # it is mounted at /kaggle/input/pascal-voc-2012/.
+    # Change this path according to your actual Kaggle Dataset name.
+    DATA_ROOT = "/kaggle/input/pascal-voc-2012/VOC2012"
 
     # Dataset structure:
     #
