@@ -1,0 +1,72 @@
+# ==========================
+# Deep Learning Framework
+# ==========================
+
+torch
+torchvision
+torchaudio
+
+
+# ==========================
+# Numerical Computing
+# ==========================
+
+numpy
+scipy
+
+
+# ==========================
+# Image Processing
+# ==========================
+
+opencv-python
+Pillow
+
+
+# ==========================
+# Data Processing
+# ==========================
+
+pandas
+
+
+# ==========================
+# Visualization
+# ==========================
+
+matplotlib
+
+
+# ==========================
+# Training Utilities
+# ==========================
+
+tqdm
+
+
+# ==========================
+# Configuration
+# ==========================
+
+PyYAML
+
+
+# ==========================
+# Evaluation / Segmentation
+# ==========================
+
+scikit-learn
+
+
+# ==========================
+# Optional: Advanced Augmentation
+# ==========================
+
+albumentations
+
+
+# ==========================
+# Logging
+# ==========================
+
+tensorboard
