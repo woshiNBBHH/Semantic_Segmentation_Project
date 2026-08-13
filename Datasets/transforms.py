@@ -12,15 +12,23 @@ def get_train_transform(
 
     Image and mask
     are transformed together.
+
+    Args:
+        image_size: int (e.g. 512) or tuple/list (H, W) e.g. (512, 512)
     """
+
+    if isinstance(image_size, (tuple, list)):
+        height, width = image_size
+    else:
+        height = width = image_size
 
 
     transform = A.Compose(
         [
 
             A.Resize(
-                image_size,
-                image_size
+                height,
+                width
             ),
 
 
@@ -58,15 +66,23 @@ def get_val_transform(
     Validation/Test transform.
 
     Only preprocessing.
+
+    Args:
+        image_size: int (e.g. 512) or tuple/list (H, W) e.g. (512, 512)
     """
+
+    if isinstance(image_size, (tuple, list)):
+        height, width = image_size
+    else:
+        height = width = image_size
 
 
     transform = A.Compose(
         [
 
             A.Resize(
-                image_size,
-                image_size
+                height,
+                width
             ),
 
 
