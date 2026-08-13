@@ -42,11 +42,23 @@ VOC2012/
 
 ---
 
-## 2. 准备 Kaggle Dataset（代码）
+## 2. 准备代码（两种方式）
 
-推荐把项目代码也作为一个 Kaggle Dataset 上传，这样 Notebook 里可以直接引用。
+### 方式一：直接 git clone（推荐，最简单）
 
-### 打包代码
+如果你的 GitHub 仓库是公开的，直接在 Kaggle Notebook 里克隆即可：
+
+```python
+!git clone https://github.com/woshiNBBHH/Semantic_Segmentation_Project.git
+```
+
+不需要把代码打包成 Kaggle Dataset。
+
+### 方式二：打包上传为 Kaggle Dataset
+
+如果你希望代码随 Notebook 一起保存，或者仓库是私有的，可以打包上传。
+
+#### 打包代码
 
 在本地项目根目录下：
 
@@ -55,7 +67,7 @@ cd /Users/woshizbw/Downloads/Semantic_Segmentation_Project
 zip -r semantic_segmentation_code.zip . -x "*.git*" -x "Experiments/*" -x "__pycache__/*"
 ```
 
-### 上传代码数据集
+#### 上传代码数据集
 
 1. 打开 [Kaggle Datasets](https://www.kaggle.com/datasets)
 2. 点击 **New Dataset**
@@ -78,7 +90,23 @@ zip -r semantic_segmentation_code.zip . -x "*.git*" -x "Experiments/*" -x "__pyc
 
 ## 4. Notebook 代码
 
+### 如果你用 git clone（推荐）
+
 在 Notebook 的第一个 Cell 中粘贴：
+
+```python
+# 克隆代码
+!git clone https://github.com/woshiNBBHH/Semantic_Segmentation_Project.git
+
+# 切换到项目目录
+import os
+os.chdir("/kaggle/working/Semantic_Segmentation_Project")
+
+# 安装依赖
+!pip install -q -r requirements.txt
+```
+
+### 如果你用 zip 数据集
 
 ```python
 # 解压代码到工作目录
@@ -91,7 +119,6 @@ with zipfile.ZipFile("/kaggle/input/semantic-segmentation-code/semantic_segmenta
     f.extractall("/kaggle/working/project")
 
 # 切换到项目目录
-import os
 os.chdir("/kaggle/working/project")
 
 # 安装依赖
@@ -107,12 +134,14 @@ os.chdir("/kaggle/working/project")
 训练过程中，输出会保存到：
 
 ```
-/kaggle/working/project/Experiments/fcn_baseline/
+/kaggle/working/Semantic_Segmentation_Project/Experiments/fcn_baseline/
     ├── best.pth
     ├── latest.pth
     ├── log.txt
     └── pred_images/
 ```
+
+（如果你用 zip 方式解压到了 `/kaggle/working/project/`，则对应路径为 `/kaggle/working/project/Experiments/fcn_baseline/`）
 
 ---
 
@@ -145,7 +174,7 @@ Kaggle 会话有 9~12 小时运行时长限制。如果训练被中断，可以�
 
 训练结束后，在 Notebook 右侧 **Output** 标签页：
 
-- 找到 `/kaggle/working/project/Experiments/fcn_baseline/`
+- 找到 `/kaggle/working/Semantic_Segmentation_Project/Experiments/fcn_baseline/`
 - 下载 `best.pth`、`log.txt`、`pred_images/` 等文件
 
 或者打包下载：
@@ -155,7 +184,7 @@ import shutil
 shutil.make_archive(
     "/kaggle/working/fcn_baseline_results",
     "zip",
-    "/kaggle/working/project/Experiments/fcn_baseline"
+    "/kaggle/working/Semantic_Segmentation_Project/Experiments/fcn_baseline"
 )
 ```
 
